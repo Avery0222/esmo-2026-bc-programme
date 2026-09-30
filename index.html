@@ -69,6 +69,9 @@
     .topic-index[open] > summary::after, .topic-session[open] summary::after { content:'−'; }
     .topic-index-intro { margin:0; padding:14px 16px 4px; color:#526179; font-size:12px; line-height:1.45; }
     .topic-session { border-top:1px solid var(--line); }
+    .session .topic-session { margin-top:11px; border-top:1px solid #c7d5ee; }
+    .session .topic-session summary { padding:11px 0 0; }
+    .session .topic-session-panel { padding:12px 0 0; }
     .topic-session summary { display:grid; grid-template-columns:1fr auto; gap:10px; padding:13px 16px; cursor:pointer; list-style:none; }
     .topic-session b { font-size:14px; line-height:1.3; }
     .topic-session small { display:block; margin-top:4px; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:10px; line-height:1.35; }
@@ -115,9 +118,9 @@
     </div>
   </details>
 
-  <div class="summary"><div class="stat"><b>23</b><span>BC-related sessions</span></div><div class="stat"><b>9</b><span>industry satellite sessions</span></div><div class="stat"><b>4</b><span>programme days shown</span></div></div>
+  <div class="summary"><div class="stat"><b>95</b><span>official BC topics</span></div><div class="stat"><b>14</b><span>presentation sessions</span></div><div class="stat"><b>9</b><span>industry satellite sessions</span></div></div>
 
-  <details class="topic-index">
+  <details class="topic-index" id="presentation-index">
     <summary>95 official BC presentations · grouped by Session</summary>
     <p class="topic-index-intro">Official ESMO presentation-topic filter: Advanced BC, advanced stage, early stage, locally advanced, HER2+, HR+ and triple-negative BC. Open a Session to see its topics; the official Session link contains the corresponding speaker and presentation-level timing.</p>
     <details class="topic-session"><summary><span><b>Invasive lobular carcinoma: Detecting and managing an elusive enemy</b><small>Fri 23 Oct · 13:30–14:45 · Cordoba Auditorium – Hall 4 · 6 topics</small></span></summary><div class="topic-session-panel"><ol class="topic-list"><li>Presentation of case/condition</li><li>Overview of lobular breast cancer (incl biology)</li><li>Medical oncology perspective</li><li>Radiology perspective</li><li>Pharmacology perspective</li><li>Q&amp;A and discussion</li></ol><a class="topic-source" href="https://cslide.ctimeetingtech.com/esmo2026/attendee/confcal/show/session/48" target="_blank" rel="noopener noreferrer">Official Session agenda, speakers &amp; timing ↗</a></div></details>
@@ -167,6 +170,7 @@
   <section><div class="day day-sun"><h2>Sun · 25 Oct</h2><span class="day-meta">CET</span></div>
     <article class="session"><div class="time">08:30</div><div><span class="tag hr">HR+ RELATED</span><div class="title">Personalising treatment for patients with early stage HR+ breast cancer</div><div class="venue">Bilbao Auditorium – Hall 3</div></div></article>
     <article class="session"><div class="time">10:15</div><div><div class="title">Optimising treatment for HER2+ early breast cancer</div><div class="venue">Barcelona Auditorium – Hall 9</div></div></article>
+    <article class="session"><div class="time">10:15</div><div><div class="title">Tracking genomic evolution and lineage plasticity to guide therapy</div><div class="venue">Cordoba Auditorium – Hall 4</div></div></article>
     <article class="session satellite"><div class="time">12:00</div><div><span class="tag">SATELLITE</span><div class="title">Daiichi Sankyo/AstraZeneca: ADC patient journey in advanced breast cancer care</div><div class="venue">Segovia Auditorium – Palacio Municipal</div></div></article>
     <article class="session satellite"><div class="time">13:00</div><div><span class="tag">SATELLITE</span><span class="tag hr">HR+ RELATED</span><div class="title">F. Hoffmann-La Roche: HR+/HER2− early breast cancer endocrine therapy</div><div class="venue">Granada Auditorium – Hall 4</div><details class="session-details"><summary>View official satellite agenda</summary><div class="agenda"><p class="agenda-title">Next-era strategies in HR+ HER2− early breast cancer: Optimising endocrine therapy</p><p class="agenda-meta">Sun, 25 Oct 2026 · 13:00–14:30 CET<br>Granada Auditorium, Hall 4 · IFEMA Madrid</p><ol class="agenda-list"><li><strong>Welcome and introduction</strong> <span class="agenda-speaker">— Nicholas C. Turner</span></li><li><strong>Current adjuvant endocrine-based therapies and unmet needs in patient care</strong> <span class="agenda-speaker">— Nicholas C. Turner</span></li><li><strong>Evaluating oral SERDs in adjuvant endocrine therapy: Current evidence and clinical trials</strong> <span class="agenda-speaker">— Miguel Martín</span></li><li><strong>Exploring window-of-opportunity trials and ctDNA-based approaches to further optimise the early stage setting with oral SERDs</strong> <span class="agenda-speaker">— Erica L. Mayer</span></li><li><strong>Q&amp;A and discussion</strong> <span class="agenda-speaker">— All presenters</span></li></ol><p class="agenda-note">For Healthcare Professionals registered to attend ESMO 2026. The symposium is also available via livestream.</p><a class="agenda-link" href="https://www.esmo.org/meeting-calendar/esmo-congress-2026/industry-sponsored-satellite-symposia/the-next-era-of-curative-care-oral-serds-in-hr-her2-early-breast-cancer" target="_blank" rel="noopener noreferrer">Official invitation ↗</a></div></details></div></article>
     <article class="session"><div class="time">14:45</div><div><div class="title">Key challenges in managing patients with metastatic breast cancer</div><div class="venue">Alicante Auditorium – Hall 6</div></div></article>
@@ -183,5 +187,21 @@
   </section>
   <footer>Source: ESMO Congress 2026 official programme · Data checked 30 September 2026 · Programme may change.</footer>
 </main>
+<script>
+  (() => {
+    const index = document.querySelector('#presentation-index');
+    if (!index) return;
+    index.querySelectorAll('.topic-session').forEach((topic) => {
+      const title = topic.querySelector('b')?.textContent.trim();
+      const target = [...document.querySelectorAll('.session')].find((card) => card.querySelector('.title')?.textContent.trim() === title);
+      if (!target) return;
+      const count = topic.querySelectorAll('.topic-list li').length;
+      topic.querySelector('b').textContent = `View ${count} presentation topics`;
+      topic.querySelector('small').textContent = 'Official Session agenda includes speakers and presentation-level timing';
+      target.querySelector('.venue').after(topic);
+    });
+    index.hidden = true;
+  })();
+</script>
 </body>
 </html>
