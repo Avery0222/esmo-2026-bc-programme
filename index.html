@@ -78,6 +78,7 @@
     .topic-session-panel { padding:0 16px 16px; }
     .topic-list { margin:0; padding:0 0 0 20px; color:#273853; font-size:12px; line-height:1.42; }
     .topic-list li { margin:0 0 8px; padding-left:2px; }
+    .topic-item-meta { display:block; margin-top:3px; color:#697386; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:10px; line-height:1.4; }
     .topic-source { display:inline-block; margin-top:5px; color:var(--blue); font-size:12px; font-weight:750; text-underline-offset:3px; }
     .poster-heading { margin:0 2px 10px; color:#08745f; font-size:25px; font-weight:400; letter-spacing:-.025em; }
     .poster-note { margin:0 2px 12px; color:var(--muted); font-family:ui-sans-serif,system-ui,sans-serif; font-size:12px; line-height:1.45; }
@@ -192,6 +193,22 @@
 </main>
 <script>
   (() => {
+    const presentationDetails = {
+      "Invasive lobular carcinoma: Detecting and managing an elusive enemy": [["Marcela Carausu", "5 min"], ["Christine Desmedt", "15 min"], ["Meritxell Bellet Ezquerra", "15 min"], ["Gary Ulaner", "15 min"], ["Romano Danesi", "15 min"], ["", "10 min"]],
+      "Proffered paper 1: Breast cancer, early and advanced stage": [["", "10 min"], ["", "5 min"], ["", "10 min"], ["", "5 min"], ["Ying Fan", "10 min"], ["Sara A. Hurvitz", "10 min"], ["Eleftherios P. Mamounas", "10 min"], ["Dennis J. Slamon", "10 min"], ["Shusen Wang", "10 min"], ["Bo Lan", "10 min"]],
+      "Rapid oral: Breast cancer, early stage": [["Sandra Ximena Franco Millan", "12 min"], ["Maria Vittoria Dieci", "12 min"], ["Lilit 9. Harutyunyan", "12 min"], ["", "9 min"], ["Gustavo Werutsky", "5 min"], ["Carlos H. Barrios", "5 min"], ["Carlos H. Barcenas", "5 min"], ["David Page", "5 min"], ["Yukinori Ozaki", "5 min"], ["Jean-Francois Boileau", "5 min"], ["Pietro De Placido", "5 min"], ["Lotte Bouwman", "5 min"], ["Young-Joon Kang", "5 min"]],
+      "Proffered paper 2: Breast cancer, early and advanced stage": [["Peter A. Fasching", "10 min"], ["", "5 min"], ["", "10 min"], ["", "5 min"], ["Antonio Giordano", "10 min"], ["Andrew D. Redfern", "10 min"], ["Binghe Xu", "10 min"], ["Joana M. Ribeiro", "10 min"], ["Hope S. Rugo", "10 min"], ["Rebecca A. Dent", "10 min"]],
+      "Rapid oral 1: Breast cancer, advanced stage": [["William J. Gradishar", "12 min"], ["Géraldine Gebhart", "12 min"], ["Vesna Bjelic-Radisic", "12 min"], ["", "24 min"], ["Kevin Kalinsky", "5 min"], ["Sara M. Tolaney", "5 min"], ["Alessandra Gennari", "5 min"], ["Veronique C. Dieras", "5 min"], ["Barbara Pistilli", "5 min"], ["Juan Jin", "5 min"]],
+      "Optimising treatment for triple negative early breast cancer": [["Marleen Kok", "20 min"], ["Seock-Ah Im", "20 min"], ["Andrew Tutt", "20 min"], ["Joana M. Ribeiro", "20 min"], ["", "10 min"]],
+      "Novel concepts for metastatic breast cancer: Looking to the future": [["Carlos H. Barrios", "15 min"], ["Erika P. Hamilton", "15 min"], ["François Clément Bidard", "15 min"], ["Hiroji Iwata", "15 min"], ["", "30 min"]],
+      "Personalising treatment for patients with early stage HR+ breast cancer": [["Mafalda Oliveira", "20 min"], ["Shigehira Saji", "20 min"], ["Komal Jhaveri", "20 min"], ["Sherko Kuemmel", "20 min"], ["", "10 min"]],
+      "Optimising treatment for HER2+ early breast cancer": [["Sara M. Tolaney", "20 min"], ["Sudeep Gupta", "20 min"], ["Sara A. Hurvitz", "20 min"], ["Sibylle Loibl", "20 min"], ["", "10 min"]],
+      "Tracking genomic evolution and lineage plasticity to guide therapy": [["Francesco Schettini", "20 min"], ["Christos Sotiriou", "25 min"]],
+      "Key challenges in managing patients with metastatic breast cancer": [["Yeon Hee Park", "25 min"], ["Antonino Musolino", "25 min"], ["Eva M. Ciruelos", "25 min"], ["", "15 min"]],
+      "Management of early breast cancer in young patients": [["Matteo Lambertini", "20 min"], ["Shani Paluch-Shimon", "25 min"]],
+      "Rapid oral 2: Breast cancer, advanced stage": [["Sherene Loi", "15 min"], ["Antonio Llombart Cussac", "12 min"], ["Pedram Razavi", "10 min"], ["", "8 min"], ["Lei Fan", "5 min"], ["Hongxia Wang", "5 min"], ["Sarah Sammons", "5 min"], ["Kamran Ahmed", "5 min"], ["Kerstin Pfister", "5 min"], ["Kazuki Nozawa", "5 min"], ["Man Li", "5 min"], ["Jian Zhang", "5 min"], ["Cristina Saura Manich", "5 min"]],
+      "Incorporation of biomarkers for early breast cancer": [["Carsten Denkert", "20 min"], ["Kevin Kalinsky", "20 min"], ["Ritse Mann", "20 min"], ["Nicholas Turner", "20 min"], ["", "10 min"]]
+    };
     const index = document.querySelector('#presentation-index');
     if (index) {
       index.querySelectorAll('.topic-session').forEach((topic) => {
@@ -199,6 +216,16 @@
         const target = [...document.querySelectorAll('.session')].find((card) => card.querySelector('.title')?.textContent.trim() === title);
         if (!target) return;
         const count = topic.querySelectorAll('.topic-list li').length;
+        const scheduleParts = topic.querySelector('small').textContent.split(' · ');
+        const sessionMeta = `${scheduleParts[0]} · ${scheduleParts[1]}`;
+        const room = target.querySelector('.venue').textContent;
+        topic.querySelectorAll('.topic-list li').forEach((item, position) => {
+          const [speaker, duration] = presentationDetails[title]?.[position] || [];
+          const meta = document.createElement('span');
+          meta.className = 'topic-item-meta';
+          meta.textContent = `${sessionMeta} · ${room} · ${duration || 'Duration not listed'}${speaker ? ` · Speaker: ${speaker}` : ''}`;
+          item.append(meta);
+        });
         topic.querySelector('b').textContent = `View ${count} presentation topics`;
         topic.querySelector('small').textContent = 'Official Session agenda includes speakers and presentation-level timing';
         target.querySelector('.venue').after(topic);
