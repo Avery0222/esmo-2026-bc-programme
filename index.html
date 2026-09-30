@@ -14,6 +14,20 @@
     .kicker { font-size:11px; letter-spacing:.13em; font-weight:700; opacity:.82; }
     h1 { margin:12px 0 8px; font-size:clamp(32px,10vw,52px); line-height:.94; font-weight:400; letter-spacing:-.04em; }
     header p { max-width:470px; margin:0; font-family:ui-sans-serif, system-ui, sans-serif; font-size:15px; line-height:1.45; opacity:.9; }
+    .meeting-details { margin:0 0 24px; border:1px solid #b9cdf6; border-radius:10px; background:#fff; overflow:hidden; font-family:ui-sans-serif,system-ui,sans-serif; }
+    .meeting-details summary { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 16px; color:var(--blue); cursor:pointer; font-weight:750; list-style:none; }
+    .meeting-details summary::-webkit-details-marker { display:none; }
+    .meeting-details summary::after { content:'+'; font-size:22px; font-weight:400; line-height:1; }
+    .meeting-details[open] summary { border-bottom:1px solid var(--line); }
+    .meeting-details[open] summary::after { content:'−'; }
+    .meeting-panel { padding:16px; }
+    .meeting-grid { display:grid; gap:16px; }
+    .meeting-item { padding-left:12px; border-left:3px solid var(--blue); }
+    .meeting-item.registration { border-left-color:#08745f; }
+    .meeting-label { display:block; margin-bottom:5px; color:var(--muted); font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:10px; font-weight:800; letter-spacing:.08em; }
+    .meeting-item b { display:block; font-size:15px; }
+    .meeting-item p { margin:5px 0 0; color:#46536a; font-size:13px; line-height:1.45; }
+    .meeting-item a { display:inline-block; margin-top:8px; color:var(--blue); font-size:13px; font-weight:700; text-decoration-thickness:1px; text-underline-offset:3px; }
     .summary { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 24px; }
     .stat { min-height:92px; padding:12px; background:#fff; border:1px solid var(--line); border-radius:10px; }
     .stat b { display:block; color:var(--blue); font-family:ui-sans-serif,system-ui,sans-serif; font-size:28px; line-height:1; }
@@ -33,6 +47,20 @@
     .tag.hr { margin-left:4px; background:#7a2ea6; }
     .title { font-size:17px; line-height:1.17; }
     .venue { margin-top:8px; color:var(--muted); font-size:11px; line-height:1.35; }
+    .session-details { margin-top:11px; border-top:1px solid #c7d5ee; font-family:ui-sans-serif,system-ui,sans-serif; }
+    .session-details summary { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:11px; color:var(--blue); cursor:pointer; font-size:12px; font-weight:800; list-style:none; }
+    .session-details summary::-webkit-details-marker { display:none; }
+    .session-details summary::after { content:'+'; font-size:17px; font-weight:400; }
+    .session-details[open] summary::after { content:'−'; }
+    .agenda { padding-top:12px; }
+    .agenda-title { margin:0 0 8px; color:#17243e; font-size:14px; font-weight:750; line-height:1.35; }
+    .agenda-meta { margin:0 0 11px; color:#526179; font-size:12px; line-height:1.4; }
+    .agenda-list { margin:0; padding-left:19px; color:#273853; font-size:12px; line-height:1.42; }
+    .agenda-list li { margin:0 0 7px; padding-left:2px; }
+    .agenda-list strong { font-weight:750; }
+    .agenda-speaker { color:#697386; }
+    .agenda-note { margin:11px 0 0; padding:9px 10px; border-left:3px solid #7a2ea6; background:#f5eff9; color:#5b3a70; font-size:11px; line-height:1.42; }
+    .agenda-link { display:inline-block; margin-top:10px; color:var(--blue); font-size:12px; font-weight:800; text-underline-offset:3px; }
     footer { padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:10px; line-height:1.5; }
     @media (min-width:620px) { main { padding-left:24px; padding-right:24px; } header { margin-left:-24px; margin-right:-24px; padding-left:40px; } .session { grid-template-columns:78px 1fr; padding:17px 18px; } }
   </style>
@@ -44,6 +72,26 @@
     <h1>Breast Cancer<br>Programme</h1>
     <p>ESMO 2026 public schedule, arranged for quick mobile reference. Madrid local time.</p>
   </header>
+
+  <details class="meeting-details">
+    <summary>Congress details &amp; attendance</summary>
+    <div class="meeting-panel">
+      <div class="meeting-grid">
+        <div class="meeting-item">
+          <span class="meeting-label">VENUE · 23–27 OCT 2026</span>
+          <b>IFEMA Madrid · Madrid, Spain</b>
+          <p>Av. del Partenón 5, 28042 Madrid, Spain</p>
+          <a href="https://maps.google.com/?q=IFEMA+Madrid,+Avenida+del+Partenon+5,+28042+Madrid" target="_blank" rel="noopener noreferrer">Open in Maps ↗</a>
+        </div>
+        <div class="meeting-item registration">
+          <span class="meeting-label">ATTENDANCE</span>
+          <b>Registration is open</b>
+          <p>An ESMO account is required to register. Individual registration remains open during the Congress; registration includes in-person scientific and educational sessions plus access to the dedicated congress platform.</p>
+          <a href="https://www.esmo.org/meeting-calendar/esmo-congress-2026/registration" target="_blank" rel="noopener noreferrer">Official registration information ↗</a>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <div class="summary"><div class="stat"><b>23</b><span>BC-related sessions</span></div><div class="stat"><b>9</b><span>industry satellite sessions</span></div><div class="stat"><b>4</b><span>programme days shown</span></div></div>
 
@@ -68,7 +116,7 @@
     <article class="session"><div class="time">08:30</div><div><span class="tag hr">HR+ RELATED</span><div class="title">Personalising treatment for patients with early stage HR+ breast cancer</div><div class="venue">Bilbao Auditorium – Hall 3</div></div></article>
     <article class="session"><div class="time">10:15</div><div><div class="title">Optimising treatment for HER2+ early breast cancer</div><div class="venue">Barcelona Auditorium – Hall 9</div></div></article>
     <article class="session satellite"><div class="time">12:00</div><div><span class="tag">SATELLITE</span><div class="title">Daiichi Sankyo/AstraZeneca: ADC patient journey in advanced breast cancer care</div><div class="venue">Segovia Auditorium – Palacio Municipal</div></div></article>
-    <article class="session satellite"><div class="time">13:00</div><div><span class="tag">SATELLITE</span><span class="tag hr">HR+ RELATED</span><div class="title">F. Hoffmann-La Roche: HR+/HER2− early breast cancer endocrine therapy</div><div class="venue">Granada Auditorium – Hall 4</div></div></article>
+    <article class="session satellite"><div class="time">13:00</div><div><span class="tag">SATELLITE</span><span class="tag hr">HR+ RELATED</span><div class="title">F. Hoffmann-La Roche: HR+/HER2− early breast cancer endocrine therapy</div><div class="venue">Granada Auditorium – Hall 4</div><details class="session-details"><summary>View official satellite agenda</summary><div class="agenda"><p class="agenda-title">Next-era strategies in HR+ HER2− early breast cancer: Optimising endocrine therapy</p><p class="agenda-meta">Sun, 25 Oct 2026 · 13:00–14:30 CET<br>Granada Auditorium, Hall 4 · IFEMA Madrid</p><ol class="agenda-list"><li><strong>Welcome and introduction</strong> <span class="agenda-speaker">— Nicholas C. Turner</span></li><li><strong>Current adjuvant endocrine-based therapies and unmet needs in patient care</strong> <span class="agenda-speaker">— Nicholas C. Turner</span></li><li><strong>Evaluating oral SERDs in adjuvant endocrine therapy: Current evidence and clinical trials</strong> <span class="agenda-speaker">— Miguel Martín</span></li><li><strong>Exploring window-of-opportunity trials and ctDNA-based approaches to further optimise the early stage setting with oral SERDs</strong> <span class="agenda-speaker">— Erica L. Mayer</span></li><li><strong>Q&amp;A and discussion</strong> <span class="agenda-speaker">— All presenters</span></li></ol><p class="agenda-note">For Healthcare Professionals registered to attend ESMO 2026. The symposium is also available via livestream.</p><a class="agenda-link" href="https://www.esmo.org/meeting-calendar/esmo-congress-2026/industry-sponsored-satellite-symposia/the-next-era-of-curative-care-oral-serds-in-hr-her2-early-breast-cancer" target="_blank" rel="noopener noreferrer">Official invitation ↗</a></div></details></div></article>
     <article class="session"><div class="time">14:45</div><div><div class="title">Key challenges in managing patients with metastatic breast cancer</div><div class="venue">Alicante Auditorium – Hall 6</div></div></article>
     <article class="session"><div class="time">16:30</div><div><div class="title">Pillars of personalised cancer prevention: The breast cancer case</div><div class="venue">Cadiz Auditorium – NCC</div></div></article>
     <article class="session satellite"><div class="time">18:30</div><div><span class="tag">SATELLITE</span><div class="title">Gilead/Kite: The ADC Evolution in Breast and Gynaecologic Cancers</div><div class="venue">Malaga Auditorium – Hall 3</div></div></article>
