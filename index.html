@@ -86,6 +86,13 @@
     .poster h3 { margin:0; font-family:Georgia,'Times New Roman',serif; font-size:16px; font-weight:400; line-height:1.25; }
     .poster p { margin:8px 0 0; color:#526179; font-size:12px; line-height:1.45; }
     .poster b { color:#273853; }
+    .poster-index { margin:0 0 30px; border:1px solid #bdd7cf; border-radius:10px; background:#fff; overflow:hidden; font-family:ui-sans-serif,system-ui,sans-serif; }
+    .poster-index summary { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px; color:#08745f; cursor:pointer; font-size:16px; font-weight:800; list-style:none; }
+    .poster-index summary::-webkit-details-marker { display:none; }
+    .poster-index summary::after { content:'+'; font-size:21px; font-weight:400; }
+    .poster-index[open] summary { border-bottom:1px solid #bdd7cf; }
+    .poster-index[open] summary::after { content:'−'; }
+    .poster-panel { padding:16px; }
     footer { padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:10px; line-height:1.5; }
     @media (min-width:620px) { main { padding-left:24px; padding-right:24px; } header { margin-left:-24px; margin-right:-24px; padding-left:40px; } .session { grid-template-columns:78px 1fr; padding:17px 18px; } }
   </style>
@@ -107,12 +114,6 @@
           <b>IFEMA Madrid · Madrid, Spain</b>
           <p>Av. del Partenón 5, 28042 Madrid, Spain</p>
           <a href="https://maps.google.com/?q=IFEMA+Madrid,+Avenida+del+Partenon+5,+28042+Madrid" target="_blank" rel="noopener noreferrer">Open in Maps ↗</a>
-        </div>
-        <div class="meeting-item registration">
-          <span class="meeting-label">ATTENDANCE</span>
-          <b>Registration is open</b>
-          <p>An ESMO account is required to register. Individual registration remains open during the Congress; registration includes in-person scientific and educational sessions plus access to the dedicated congress platform.</p>
-          <a href="https://www.esmo.org/meeting-calendar/esmo-congress-2026/registration" target="_blank" rel="noopener noreferrer">Official registration information ↗</a>
         </div>
       </div>
     </div>
@@ -139,8 +140,9 @@
     <details class="topic-session"><summary><span><b>Incorporation of biomarkers for early breast cancer</b><small>Mon 26 Oct · 14:45–16:15 · Almeria Auditorium – Hall 9 · 5 topics</small></span></summary><div class="topic-session-panel"><ol class="topic-list"><li>Dynamic tissue-based biomarkers to guide treatment</li><li>Current use of genomic assays</li><li>How to integrate new imaging techniques in the clinic</li><li>MRD to inform treatment decision</li><li>Q&amp;A and discussion</li></ol><a class="topic-source" href="https://cslide.ctimeetingtech.com/esmo2026/attendee/confcal/show/session/3" target="_blank" rel="noopener noreferrer">Official Session agenda, speakers &amp; timing ↗</a></div></details>
   </details>
 
-  <section>
-    <h2 class="poster-heading">Requested Poster &amp; ePoster studies</h2>
+  <details class="poster-index" id="poster-index">
+    <summary>Requested Poster &amp; ePoster studies · 6 records</summary>
+    <div class="poster-panel">
     <p class="poster-note">Details below are transcribed from the official ESMO 2026 Poster/ePoster records. “No scheduled display time published” means the official ePoster entry does not state a fixed presentation slot.</p>
     <article class="poster"><p class="poster-type">1890eP · ePoster · HR+ breast cancer</p><h3>Integrated Molecular Profiling of Paired Tumor Tissue and Circulating Tumor DNA in Chinese Patients with HR+/HER2− Advanced Breast Cancer Prior to First-Line Systemic Therapy</h3><p><b>Presenter:</b> Jian Yue (Beijing, China)<br><b>Authors:</b> Jian Yue; Liuliu Quan; Yuan Peng<br><b>Time:</b> No scheduled display time published on the ePoster record.</p></article>
     <article class="poster"><p class="poster-type">314P · Poster · AI for diagnostics and profiling</p><h3>Study on the association between HER2 expression in breast cancer and spatial heterogeneity of microvascular density</h3><p><b>Presenter / author:</b> Jingyue Li (Shenyang, China)<br><b>Time:</b> Sun 25 Oct 2026 · 12:00–12:45</p></article>
@@ -148,7 +150,8 @@
     <article class="poster"><p class="poster-type">1841eTiP · ePoster · HER2+ breast cancer</p><h3>Al18F-HER2-BCH PET/CT guided precision neoadjuvant therapy for HER2-positive early breast cancer: FHERNAT trial</h3><p><b>Presenter:</b> Xu Liang (Beijing, China)<br><b>Authors:</b> Xu Liang; Yifei Chen; Xiaoyi Guo<br><b>Time:</b> No scheduled display time published on the ePoster record.</p></article>
     <article class="poster"><p class="poster-type">1779P · Poster · HER2+ breast cancer</p><h3>Prognostic Impact of PIK3CA Mutations in HER2-Positive Advanced Breast Cancer: A Real-World Multicenter Study</h3><p><b>Presenter:</b> Ouchen Wang (Wenzhou, China)<br><b>Authors:</b> Ouchen Wang; Jingao Dai; Wenwu Wang; Guobin Jiang; Zhengyang Xu; Guinv Hu; Chaoyue Lv; Shengnan Yao; Jiatong Ru<br><b>Time:</b> Sat 24 Oct 2026 · 12:00–12:45</p></article>
     <article class="poster"><p class="poster-type">1929eP · ePoster · HR+ breast cancer</p><h3>Characterization of PIK3CA variants and real-world clinical evolution of first-line CDK4/6 inhibitors: Insights from a Chinese HR+/HER2− advanced breast cancer cohort</h3><p><b>Presenter / author:</b> Shi Jing (Shenyang, China)<br><b>Time:</b> No scheduled display time published on the ePoster record.</p></article>
-  </section>
+    </div>
+  </details>
 
   <section><div class="day day-fri"><h2>Fri · 23 Oct</h2><span class="day-meta">CEST</span></div>
     <article class="session satellite"><div class="time">09:45</div><div><span class="tag">SATELLITE</span><div class="title">Medscape: Redrawing the Breast Cancer Roadmap</div><div class="venue">Pamplona Auditorium – Hall 5</div></div></article>
@@ -190,17 +193,21 @@
 <script>
   (() => {
     const index = document.querySelector('#presentation-index');
-    if (!index) return;
-    index.querySelectorAll('.topic-session').forEach((topic) => {
-      const title = topic.querySelector('b')?.textContent.trim();
-      const target = [...document.querySelectorAll('.session')].find((card) => card.querySelector('.title')?.textContent.trim() === title);
-      if (!target) return;
-      const count = topic.querySelectorAll('.topic-list li').length;
-      topic.querySelector('b').textContent = `View ${count} presentation topics`;
-      topic.querySelector('small').textContent = 'Official Session agenda includes speakers and presentation-level timing';
-      target.querySelector('.venue').after(topic);
-    });
-    index.hidden = true;
+    if (index) {
+      index.querySelectorAll('.topic-session').forEach((topic) => {
+        const title = topic.querySelector('b')?.textContent.trim();
+        const target = [...document.querySelectorAll('.session')].find((card) => card.querySelector('.title')?.textContent.trim() === title);
+        if (!target) return;
+        const count = topic.querySelectorAll('.topic-list li').length;
+        topic.querySelector('b').textContent = `View ${count} presentation topics`;
+        topic.querySelector('small').textContent = 'Official Session agenda includes speakers and presentation-level timing';
+        target.querySelector('.venue').after(topic);
+      });
+      index.hidden = true;
+    }
+    const posters = document.querySelector('#poster-index');
+    const footer = document.querySelector('footer');
+    if (posters && footer) footer.before(posters);
   })();
 </script>
 </body>
