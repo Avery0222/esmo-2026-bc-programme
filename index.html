@@ -21,7 +21,11 @@
     .notice { margin:0 0 26px; padding:14px 16px; border-left:4px solid var(--blue); background:#fff; color:#46536a; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; line-height:1.45; }
     section { margin:0 0 30px; }
     .day { display:flex; align-items:baseline; gap:10px; margin:0 2px 10px; }
-    h2 { margin:0; color:var(--blue); font-size:26px; font-weight:400; letter-spacing:-.025em; }
+    h2 { margin:0; font-size:26px; font-weight:400; letter-spacing:-.025em; }
+    .day-fri h2 { color:#0b41cd; }
+    .day-sat h2 { color:#7a2ea6; }
+    .day-sun h2 { color:#b46900; }
+    .day-mon h2 { color:#08745f; }
     .day-meta { color:var(--muted); font-size:11px; }
     .session { position:relative; display:grid; grid-template-columns:64px 1fr; gap:12px; margin:0 0 8px; padding:15px 14px; background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 2px 9px rgba(20,48,91,.035); }
     .session.satellite { background:var(--sat); border-color:#b9cdf6; }
@@ -44,7 +48,7 @@
   <div class="summary"><div class="stat"><b>23</b><span>BC-related sessions</span></div><div class="stat"><b>9</b><span>industry satellite sessions</span></div><div class="stat"><b>4</b><span>programme days shown</span></div></div>
   <p class="notice">Industry satellites are shaded blue and labelled. ESMO’s public records currently do not disclose speaker / author names for the listed sub-talks; a named Chair is not treated as a speaker here.</p>
 
-  <section><div class="day"><h2>Fri · 23 Oct</h2><span class="day-meta">CEST</span></div>
+  <section><div class="day day-fri"><h2>Fri · 23 Oct</h2><span class="day-meta">CEST</span></div>
     <article class="session satellite"><div class="time">09:45</div><div><span class="tag">SATELLITE</span><div class="title">Medscape: Redrawing the Breast Cancer Roadmap</div><div class="venue">Pamplona Auditorium – Hall 5</div></div></article>
     <article class="session"><div class="time">13:30</div><div><div class="title">Invasive lobular carcinoma: Detecting and managing an elusive enemy</div><div class="venue">Cordoba Auditorium – Hall 4</div></div></article>
     <article class="session"><div class="time">13:30</div><div><div class="title">Proffered paper 1: Breast cancer, early and advanced stage</div><div class="venue">Alicante Auditorium – Hall 6</div></div></article>
@@ -52,7 +56,7 @@
     <article class="session satellite"><div class="time">18:15</div><div><span class="tag">SATELLITE</span><div class="title">Menarini: ESR1-mutated Advanced Breast Cancer</div><div class="venue">Santander Auditorium – Hall 10</div></div></article>
   </section>
 
-  <section><div class="day"><h2>Sat · 24 Oct</h2><span class="day-meta">CEST</span></div>
+  <section><div class="day day-sat"><h2>Sat · 24 Oct</h2><span class="day-meta">CEST</span></div>
     <article class="session"><div class="time">08:30</div><div><div class="title">Proffered paper 2: Breast cancer, early and advanced stage</div><div class="venue">Alicante Auditorium – Hall 6</div></div></article>
     <article class="session"><div class="time">10:15</div><div><div class="title">Rapid oral 1: Breast cancer, advanced stage</div><div class="venue">Almeria Auditorium – Hall 9</div></div></article>
     <article class="session satellite"><div class="time">13:00</div><div><span class="tag">SATELLITE</span><div class="title">AstraZeneca: Advancing 1L Breast Cancer Care Across Subtypes</div><div class="venue">Granada Auditorium – Hall 4</div></div></article>
@@ -61,7 +65,7 @@
     <article class="session satellite"><div class="time">18:30</div><div><span class="tag">SATELLITE</span><div class="title">Eli Lilly: HR+/HER2− Breast Cancer—Defining Your Next Clinical Direction</div><div class="venue">Madrid Auditorium – Hall 4</div></div></article>
   </section>
 
-  <section><div class="day"><h2>Sun · 25 Oct</h2><span class="day-meta">CET</span></div>
+  <section><div class="day day-sun"><h2>Sun · 25 Oct</h2><span class="day-meta">CET</span></div>
     <article class="session"><div class="time">08:30</div><div><div class="title">Personalising treatment for patients with early stage HR+ breast cancer</div><div class="venue">Bilbao Auditorium – Hall 3</div></div></article>
     <article class="session"><div class="time">10:15</div><div><div class="title">Optimising treatment for HER2+ early breast cancer</div><div class="venue">Barcelona Auditorium – Hall 9</div></div></article>
     <article class="session satellite"><div class="time">12:00</div><div><span class="tag">SATELLITE</span><div class="title">Daiichi Sankyo/AstraZeneca: ADC patient journey in advanced breast cancer care</div><div class="venue">Segovia Auditorium – Palacio Municipal</div></div></article>
@@ -72,7 +76,7 @@
     <article class="session satellite"><div class="time">18:30</div><div><span class="tag">SATELLITE</span><div class="title">Pfizer: Metastatic Breast Cancer—Individualised Decision-Making</div><div class="venue">Madrid Auditorium – Hall 4</div></div></article>
   </section>
 
-  <section><div class="day"><h2>Mon · 26 Oct</h2><span class="day-meta">CET</span></div>
+  <section><div class="day day-mon"><h2>Mon · 26 Oct</h2><span class="day-meta">CET</span></div>
     <article class="session"><div class="time">08:30</div><div><div class="title">Management of early breast cancer in young patients</div><div class="venue">Granada Auditorium – Hall 4</div></div></article>
     <article class="session"><div class="time">10:15</div><div><div class="title">Rapid oral 2: Breast cancer, advanced stage</div><div class="venue">Alicante Auditorium – Hall 6</div></div></article>
     <article class="session satellite"><div class="time">13:00</div><div><span class="tag">SATELLITE</span><div class="title">Novartis: CDK4/6 strategies in HR+/HER2− breast cancer</div><div class="venue">Madrid Auditorium – Hall 4</div></div></article>
