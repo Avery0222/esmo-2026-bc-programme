@@ -218,12 +218,11 @@
         const count = topic.querySelectorAll('.topic-list li').length;
         const scheduleParts = topic.querySelector('small').textContent.split(' · ');
         const sessionMeta = `${scheduleParts[0]} · ${scheduleParts[1]}`;
-        const room = target.querySelector('.venue').textContent;
         topic.querySelectorAll('.topic-list li').forEach((item, position) => {
           const [speaker, duration] = presentationDetails[title]?.[position] || [];
           const meta = document.createElement('span');
           meta.className = 'topic-item-meta';
-          meta.textContent = `${sessionMeta} · ${room} · ${duration || 'Duration not listed'}${speaker ? ` · Speaker: ${speaker}` : ''}`;
+          meta.textContent = `${sessionMeta} · ${duration || 'Duration not listed'}${speaker ? ` · Speaker: ${speaker}` : ''}`;
           item.append(meta);
         });
         topic.querySelector('b').textContent = `View ${count} presentation topics`;
